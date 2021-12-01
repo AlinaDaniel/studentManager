@@ -1,0 +1,42 @@
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+  layout:decorator="layout">
+  <head>
+    <title>Student : View info</title>
+  </head>
+  <body>
+    <h1 layout:fragment="header">Student : View info</h1>
+    <div layout:fragment="content"
+        class="container">
+      <div class="alert alert-success"
+          th:if="${globalStudent}"
+          th:text="${globalStudent}">
+        Some Success student
+      </div>
+      <div class="pull-right">
+        <a th:href="@{/}" href="list.html">
+          Students
+        </a>
+      </div>
+      <dl>
+        <dt>ID</dt>
+        <dd id="id" th:text="${student.id}">123</dd>
+        <dt>GROUP</dt>
+        <dd id="groupName"
+            th:text="${student.groupName}">
+          19704
+        </dd>
+        <dt>NAME</dt>
+        <dd id="name"
+            th:text="${student.toString()}">
+          Alina Sergeevna Daniel
+        </dd>
+        <dt>BIRTHDAY</dt>
+        <dd id="birthdayDate"
+            th:text="${student.birthdayDate}">
+          2001-07-25
+        </dd>
+      </dl>
+    </div>
+  </body>
+</html>

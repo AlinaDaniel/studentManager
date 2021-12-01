@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+  layout:decorator="layout">
+  <head>
+    <title>Students : View all</title>
+  </head>
+  <body>
+    <h1 layout:fragment="header">Students : View all</h1>
+    <div layout:fragment="content" class="container">
+      <div class="pull-right">
+        <a href="form.html" th:href="@{/(form)}">Add Student</a>
+       </div>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <td>ID</td>
+            <td>GROUP</td>
+            <td>FIRST NAME</td>
+            <td>SECOND NAME</td>
+            <td>LAST NAME</td>
+            <td>BIRTHDAY</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:if="${students.empty}">
+            <td colspan="6">
+              No students
+            </td>
+          </tr>
+          <tr th:each="student : ${students}">
+            <td>
+              <a href="view.html"
+                 th:href="@{'/' + ${student.id}}"
+                 th:text="${student.id}">
+                1
+              </a>
+            </td>
+            <td th:text="${student.groupName}">19704</td>
+            <td th:text="${student.firstName}">Alina</td>
+            <td th:text="${student.secondName}">Sergeevna</td>
+            <td th:text="${student.lastName}">Daniel</td>
+            <td th:text="${student.birthdayDate}">2001-07-25</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
